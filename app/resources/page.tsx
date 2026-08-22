@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 // First 2 blocks (h1, intro) form the hero — this page has no eyebrow label.
 const HERO_BLOCK_COUNT = 2;
 
+// The reel section's TikTok thumbnails come from a signed, expiring CDN URL
+// (see components/ReelThumbnail.tsx) — revalidating hourly keeps a
+// statically-built page from shipping a thumbnail link that's gone stale by
+// the time someone visits.
+export const revalidate = 3600;
+
 export default function ResourcesPage() {
   const heroBlocks = resourcesHub.blocks.slice(0, HERO_BLOCK_COUNT);
   const bodyBlocks = resourcesHub.blocks.slice(HERO_BLOCK_COUNT);

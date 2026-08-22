@@ -7,6 +7,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import StatBar from "@/components/StatBar";
 import { PRACTICE_AREA_ICONS } from "@/components/PracticeAreaIcon";
 import { practiceAreaCategories, getPracticeAreaCategory, metaDescription } from "@/lib/content";
+import { PRACTICE_AREA_HERO_IMAGES } from "@/lib/practiceAreaImages";
 import type { Block } from "@/lib/types";
 
 export function generateStaticParams() {
@@ -24,20 +25,6 @@ export async function generateMetadata({
     ? { title: category.title, description: metaDescription(category.blocks) }
     : { title: "Not found" };
 }
-
-// One hero background photo per practice area, matching what that page is
-// about. Only categories with an entry here get the photo hero — everything
-// else still falls back to the plain flowing layout below, so rolling out to
-// more categories later is just adding an image + entry, no code changes.
-const PRACTICE_AREA_HERO_IMAGES: Record<string, string> = {
-  "birth-injury": "/practice-areas/birth-injury.jpg",
-  "medical-malpractice": "/practice-areas/medical-malpractice.jpg",
-  "mass-torts": "/practice-areas/mass-torts.jpg",
-  "traumatic-brain-injury": "/practice-areas/traumatic-brain-injury.jpg",
-  "car-accidents": "/practice-areas/car-accidents.jpg",
-  "truck-accidents": "/practice-areas/truck-accidents.jpg",
-  "wrongful-death": "/practice-areas/wrongful-death.jpg",
-};
 
 // Every category page follows the same shape: an h2 opens a section, and
 // what follows is either a repeating (h3, text) list (conditions handled,

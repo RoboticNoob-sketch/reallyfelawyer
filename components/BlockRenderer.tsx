@@ -18,6 +18,7 @@ import RevealOnScroll from "./RevealOnScroll";
 import PlatformIcon, { type Platform } from "./PlatformIcon";
 import FaqAccordion from "./FaqAccordion";
 import CaseResultCarousel from "./CaseResultCarousel";
+import ReelThumbnail from "./ReelThumbnail";
 import YouTubeThumbnail from "./YouTubeThumbnail";
 import type { Block } from "@/lib/types";
 import { normalizeHref } from "@/lib/content";
@@ -578,10 +579,14 @@ export default function BlockRenderer({ blocks }: { blocks: Block[] }) {
                           rel="noopener noreferrer"
                           className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-surface transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:shadow-[0_12px_24px_-10px_rgba(212,175,55,0.3)]"
                         >
-                          <div
-                            className={`relative flex aspect-[9/12] shrink-0 items-center justify-center bg-gradient-to-br ${REEL_THUMBNAIL_STYLES[platform]}`}
-                          >
-                            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/30 text-white backdrop-blur transition-transform duration-300 group-hover:scale-110">
+                          <div className="relative flex aspect-[9/12] shrink-0 items-center justify-center overflow-hidden">
+                            <ReelThumbnail
+                              platform={platform}
+                              url={reel.url}
+                              gradientClass={REEL_THUMBNAIL_STYLES[platform]}
+                            />
+                            <div className="pointer-events-none absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/25" />
+                            <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/30 text-white backdrop-blur transition-transform duration-300 group-hover:scale-110">
                               <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" strokeWidth={0} />
                             </span>
                             <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white backdrop-blur">

@@ -18,9 +18,17 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import PlatformIcon, { type Platform } from "@/components/PlatformIcon";
 import PullQuote from "@/components/PullQuote";
 import StatBar from "@/components/StatBar";
+import HeroImageCarousel from "@/components/HeroImageCarousel";
 import { PRACTICE_AREA_ICONS } from "@/components/PracticeAreaIcon";
 import { home, practiceAreaCategories, normalizeHref } from "@/lib/content";
+import { PRACTICE_AREA_HERO_IMAGES } from "@/lib/practiceAreaImages";
 import type { Block } from "@/lib/types";
+
+// The reel section's TikTok thumbnails come from a signed, expiring CDN URL
+// (see components/ReelThumbnail.tsx) — revalidating hourly keeps a
+// statically-built page from shipping a thumbnail link that's gone stale by
+// the time someone visits.
+export const revalidate = 3600;
 
 const CHOOSE_US_ICONS: LucideIcon[] = [ShieldCheck, MessagesSquare, Gavel, HandCoins];
 const STEP_ICONS: LucideIcon[] = [PhoneCall, FileSearch, Swords, Trophy];
@@ -52,6 +60,10 @@ const STEP_ICONS: LucideIcon[] = [PhoneCall, FileSearch, Swords, Trophy];
 const heroText = home.blocks.slice(0, 3);
 const heroButtons = onlyButtons(home.blocks.slice(3, 5));
 const portrait = home.blocks[5];
+
+const heroSlides = practiceAreaCategories
+  .filter((c) => PRACTICE_AREA_HERO_IMAGES[c.slug])
+  .map((c) => ({ slug: c.slug, title: c.title, image: PRACTICE_AREA_HERO_IMAGES[c.slug] }));
 
 const practiceHeader = home.blocks.slice(16, 18);
 const practiceAreaHrefByTitle = new Map(
@@ -143,22 +155,26 @@ export default function HomePage() {
               </div>
             </div>
 
-            {portrait?.type === "image" && (
+            {(portrait?.type === "image" || heroSlides.length > 0) && (
               <div className="animate-fade-up mx-auto w-full max-w-xs text-center [animation-delay:150ms] lg:mx-0 lg:max-w-sm lg:text-left">
-                <div className="group relative aspect-square w-full overflow-hidden rounded-3xl border border-gold/30">
-                  <Image
-                    src="/hero/attorney-hero.jpg"
-                    alt="A parent gently holding their newborn's hand"
-                    fill
-                    sizes="(min-width: 1024px) 380px, 320px"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/85 via-canvas/10 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 rounded-full border border-gold/40 bg-canvas/70 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-gold backdrop-blur">
-                    <Scale className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-                    Birth Injury &amp; Malpractice Advocates
+                {heroSlides.length > 0 ? (
+                  <HeroImageCarousel slides={heroSlides} />
+                ) : (
+                  <div className="group relative aspect-square w-full overflow-hidden rounded-3xl border border-gold/30">
+                    <Image
+                      src="/hero/attorney-hero.jpg"
+                      alt="A parent gently holding their newborn's hand"
+                      fill
+                      sizes="(min-width: 1024px) 380px, 320px"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/85 via-canvas/10 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 rounded-full border border-gold/40 bg-canvas/70 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-gold backdrop-blur">
+                      <Scale className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+                      Birth Injury &amp; Malpractice Advocates
+                    </div>
                   </div>
-                </div>
+                )}
                 <PullQuote attribution="— Larry F. Taylor, Jr." className="mt-5">
                   <p className="text-xl font-bold">
                     It&rsquo;s not about <span className="text-gold">&ldquo;I,&rdquo;</span> it&rsquo;s
