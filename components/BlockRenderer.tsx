@@ -238,41 +238,89 @@ export default function BlockRenderer({ blocks }: { blocks: Block[] }) {
             return <CaseResultCarousel key={i} items={item.items} />;
           }
 
-          // Blog card grid — each teaser gets an image slot up top (the live
-          // site uses a "replace with photo" placeholder here too, since the
-          // real post photography doesn't exist yet) rather than stacking
-          // full-width excerpt blocks.
+          // Blog: a large featured post (the first teaser) above a grid of
+          // the rest, each with a byline row — the HubSpot-style "featured +
+          // grid" pattern, scaled to five posts rather than fabricating
+          // category tabs, a video library, or pagination we have no
+          // content for. Every card still uses the "replace with photo"
+          // placeholder since the real post photography doesn't exist yet.
           if (item.kind === "blog-teasers") {
-          return (
-            <div key={i} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {item.items.map((teaser, j) => (
-                <RevealOnScroll key={j} delayMs={j * 80}>
-                  <Link
-                    href={normalizeHref(teaser.link)}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-surface transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_12px_24px_-10px_rgba(212,175,55,0.25)]"
-                  >
-                    <div className="flex aspect-video items-center justify-center border-b border-dashed border-gold/30 bg-canvas">
-                      <ImageIcon className="h-8 w-8 text-gold/40" strokeWidth={1.5} />
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-gold">
-                        {teaser.category}
-                        <span className="h-1 w-1 shrink-0 rounded-full bg-gold/40" />
-                        <span className="font-semibold normal-case text-muted">
-                          {teaser.read_time}
-                        </span>
-                      </p>
-                      <h3 className="mt-3 font-bold text-white transition-colors group-hover:text-gold">
-                        {teaser.title}
-                      </h3>
-                      <p className="mt-2 flex-1 text-sm text-body">{teaser.excerpt}</p>
-                      <p className="mt-4 text-sm font-bold text-primary">{teaser.cta}</p>
-                    </div>
-                  </Link>
-                </RevealOnScroll>
-              ))}
-            </div>
-          );
+            const [featured, ...rest] = item.items;
+            return (
+              <div key={i} className="space-y-8">
+                {featured && (
+                  <RevealOnScroll>
+                    <Link
+                      href={normalizeHref(featured.link)}
+                      className="group grid overflow-hidden rounded-2xl border border-hairline bg-surface transition-all duration-300 ease-out hover:border-gold/50 lg:grid-cols-2"
+                    >
+                      <div className="flex aspect-video items-center justify-center border-b border-dashed border-gold/30 bg-canvas lg:aspect-auto lg:border-b-0 lg:border-r">
+                        <ImageIcon className="h-10 w-10 text-gold/40" strokeWidth={1.5} />
+                      </div>
+                      <div className="flex flex-col justify-center p-8">
+                        <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-gold">
+                          Featured
+                          <span className="h-1 w-1 shrink-0 rounded-full bg-gold/40" />
+                          {featured.category}
+                        </p>
+                        <h2 className="mt-3 text-2xl font-bold text-white transition-colors group-hover:text-gold sm:text-3xl">
+                          {featured.title}
+                        </h2>
+                        <p className="mt-3 text-body">{featured.excerpt}</p>
+                        <div className="mt-5 flex items-center gap-3">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-canvas text-gold">
+                            <UserRound className="h-4 w-4" strokeWidth={1.75} />
+                          </span>
+                          <div>
+                            <p className="text-sm font-bold text-white">
+                              Larry F. Taylor, Jr.
+                            </p>
+                            <p className="text-xs text-muted">{featured.read_time}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </RevealOnScroll>
+                )}
+
+                {rest.length > 0 && (
+                  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {rest.map((teaser, j) => (
+                      <RevealOnScroll key={j} delayMs={j * 80}>
+                        <Link
+                          href={normalizeHref(teaser.link)}
+                          className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-surface transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_12px_24px_-10px_rgba(212,175,55,0.25)]"
+                        >
+                          <div className="flex aspect-video items-center justify-center border-b border-dashed border-gold/30 bg-canvas">
+                            <ImageIcon className="h-8 w-8 text-gold/40" strokeWidth={1.5} />
+                          </div>
+                          <div className="flex flex-1 flex-col p-6">
+                            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-gold">
+                              {teaser.category}
+                              <span className="h-1 w-1 shrink-0 rounded-full bg-gold/40" />
+                              <span className="font-semibold normal-case text-muted">
+                                {teaser.read_time}
+                              </span>
+                            </p>
+                            <h3 className="mt-3 font-bold text-white transition-colors group-hover:text-gold">
+                              {teaser.title}
+                            </h3>
+                            <p className="mt-2 flex-1 text-sm text-body">{teaser.excerpt}</p>
+                            <div className="mt-4 flex items-center justify-between gap-2 border-t border-hairline pt-3">
+                              <span className="flex items-center gap-1.5 text-xs font-semibold text-muted">
+                                <UserRound className="h-3.5 w-3.5" strokeWidth={1.75} />
+                                Larry F. Taylor, Jr.
+                              </span>
+                              <span className="text-sm font-bold text-primary">{teaser.cta}</span>
+                            </div>
+                          </div>
+                        </Link>
+                      </RevealOnScroll>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
           }
 
           // Whitepaper guide card — a two-panel layout (content + a gradient

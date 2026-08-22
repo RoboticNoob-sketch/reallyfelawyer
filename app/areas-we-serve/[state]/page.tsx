@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CheckCircle2, Clock, FileText, Scale, MapPin } from "lucide-react";
+import RevealOnScroll from "@/components/RevealOnScroll";
+import StatBar from "@/components/StatBar";
+import AreaCtaCard from "@/components/AreaCtaCard";
+import { PRACTICE_AREA_ICONS } from "@/components/PracticeAreaIcon";
 import { areasWeServe, getState } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -22,6 +27,20 @@ export async function generateMetadata({
     : { title: "Not found" };
 }
 
+const CASES_HANDLED = [
+  "Birth injury (cerebral palsy, HIE, kernicterus, shoulder dystocia, placental abruption)",
+  "Medical malpractice (misdiagnosis, surgical errors)",
+  "Mass torts",
+  "Traumatic brain injury, car wrecks, truck wrecks, and wrongful death",
+];
+
+const QUICK_LINKS: { label: string; href: string }[] = [
+  { label: "Birth Injury", href: "/practice-areas/birth-injury" },
+  { label: "Medical Malpractice", href: "/practice-areas/medical-malpractice" },
+  { label: "Car Accidents", href: "/practice-areas/car-accidents" },
+  { label: "Truck Accidents", href: "/practice-areas/truck-accidents" },
+];
+
 export default async function StatePage({
   params,
 }: {
@@ -34,138 +53,124 @@ export default async function StatePage({
   const cityList = state.cities.map((c) => c.name).join(", ");
 
   return (
-    <div className="mx-auto max-w-content space-y-10 px-6 py-16">
-      <div>
-        <p className="eyebrow">{state.name}</p>
-        <h1 className="text-4xl font-bold text-white sm:text-5xl">
-          {state.name} Birth Injury, Malpractice &amp; Injury Lawyer
-        </h1>
-        <p className="mt-4 max-w-2xl text-body">
-          Attorney Larry F. Taylor, Jr. — the RealLyfe Lawyer, as seen on Cochran Law
-          Firm, Texas — represents {state.name} families in birth injury, medical
-          malpractice, mass torts, traumatic brain injury, and car and truck wreck
-          cases. Larry is based in Texas and licensed across Texas, Oklahoma, New
-          Mexico, and Arizona, and partners with trusted co-counsel and associates
-          nationwide — so no matter where you are, real answers and real advocacy are
-          within reach.
-        </p>
-      </div>
+    <div>
+      <section className="border-b border-hairline bg-gradient-to-b from-surface to-canvas">
+        <div className="mx-auto max-w-content px-6 py-16">
+          <RevealOnScroll className="max-w-2xl">
+            <p className="eyebrow mb-2">{state.name}</p>
+            <h1 className="text-4xl font-bold text-white sm:text-5xl">
+              {state.name} Birth Injury, Malpractice &amp; Injury Lawyer
+            </h1>
+            <p className="mt-4 text-body">
+              Attorney Larry F. Taylor, Jr. — the RealLyfe Lawyer, as seen on Cochran Law
+              Firm, Texas — represents {state.name} families in birth injury, medical
+              malpractice, mass torts, traumatic brain injury, and car and truck wreck
+              cases. Larry is based in Texas and licensed across Texas, Oklahoma, New
+              Mexico, and Arizona, and partners with trusted co-counsel and associates
+              nationwide — so no matter where you are, real answers and real advocacy are
+              within reach.
+            </p>
+          </RevealOnScroll>
+        </div>
+      </section>
 
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-        {[
-          ["20+", "Years of trial experience"],
-          ["4+", "States served — TX, OK, NM, AZ + more"],
-          ["$0", "Fee unless we win or settle"],
-          ["24/7", "Free confidential case review"],
-        ].map(([value, label]) => (
-          <div key={label}>
-            <p className="text-3xl font-bold text-primary">{value}</p>
-            <p className="text-sm text-muted">{label}</p>
+      <StatBar />
+
+      <div className="mx-auto max-w-content space-y-14 px-6 py-16">
+        <section>
+          <p className="eyebrow mb-2">What We Handle</p>
+          <h2 className="text-2xl font-bold text-white">
+            {state.name} injury and malpractice cases we handle
+          </h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {CASES_HANDLED.map((item, i) => (
+              <RevealOnScroll
+                key={item}
+                delayMs={i * 80}
+                className="flex gap-3 rounded-2xl border border-hairline bg-surface p-5"
+              >
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" strokeWidth={1.75} />
+                <span className="text-sm leading-relaxed text-body">{item}</span>
+              </RevealOnScroll>
+            ))}
           </div>
-        ))}
-      </div>
+        </section>
 
-      <div>
-        <h2 className="text-2xl font-bold text-white">
-          {state.name} injury and malpractice cases we handle
-        </h2>
-        <ul className="mt-3 space-y-2">
-          {[
-            "Birth injury (cerebral palsy, HIE, kernicterus, shoulder dystocia, placental abruption)",
-            "Medical malpractice (misdiagnosis, surgical errors)",
-            "Mass torts",
-            "Traumatic brain injury, car wrecks, truck wrecks, and wrongful death",
-          ].map((item) => (
-            <li key={item} className="flex gap-3 text-body">
-              <span className="mt-1 text-primary">✓</span>
-              {item}
-            </li>
+        <section>
+          <p className="eyebrow mb-2">Know the Rules</p>
+          <h2 className="text-2xl font-bold text-white">Filing deadlines &amp; rules</h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-3">
+            {[
+              { icon: Clock, title: "General injury deadline", text: state.general_sol },
+              { icon: FileText, title: "Medical malpractice specifics", text: state.med_mal_specifics },
+              { icon: Scale, title: "Damages caps", text: state.damages_cap },
+            ].map(({ icon: Icon, title, text }, i) => (
+              <RevealOnScroll
+                key={title}
+                delayMs={i * 100}
+                className="rounded-2xl border border-hairline bg-surface p-6"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-canvas text-gold">
+                  <Icon className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <h3 className="mt-4 font-bold text-white">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-body">{text}</p>
+              </RevealOnScroll>
+            ))}
+          </div>
+          <p className="mt-6 max-w-2xl text-body">{state.deadline_summary}</p>
+          {state.notes_extra.map((note) => (
+            <p key={note} className="mt-2 text-sm text-muted">
+              {note}
+            </p>
           ))}
-        </ul>
-      </div>
+          <p className="mt-4 text-xs text-muted">
+            General information only, not legal advice. Deadlines can be shorter for
+            claims involving governmental entities, and may be tolled for minors.
+            Confirm specifics with an attorney.
+          </p>
+        </section>
 
-      <div className="grid gap-6 sm:grid-cols-3">
-        <div className="rounded-2xl border border-hairline bg-surface p-6">
-          <h3 className="font-bold text-white">General injury deadline</h3>
-          <p className="mt-2 text-sm text-body">{state.general_sol}</p>
-        </div>
-        <div className="rounded-2xl border border-hairline bg-surface p-6">
-          <h3 className="font-bold text-white">Medical malpractice specifics</h3>
-          <p className="mt-2 text-sm text-body">{state.med_mal_specifics}</p>
-        </div>
-        <div className="rounded-2xl border border-hairline bg-surface p-6">
-          <h3 className="font-bold text-white">Damages caps</h3>
-          <p className="mt-2 text-sm text-body">{state.damages_cap}</p>
-        </div>
-      </div>
+        <section>
+          <p className="eyebrow mb-2">Local Coverage</p>
+          <h2 className="text-2xl font-bold text-white">Cities we serve in {state.name}</h2>
+          <p className="mt-2 max-w-2xl text-body">
+            We help injured people throughout {state.name}, including {cityList}.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {state.cities.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/areas-we-serve/${state.slug}/${city.slug}`}
+                className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-sm text-body transition-colors hover:border-gold/50 hover:text-white"
+              >
+                <MapPin className="h-3.5 w-3.5 text-gold" strokeWidth={2} />
+                {city.name}
+              </Link>
+            ))}
+          </div>
+        </section>
 
-      <p className="text-body">{state.deadline_summary}</p>
-      {state.notes_extra.map((note) => (
-        <p key={note} className="text-sm text-muted">
-          {note}
-        </p>
-      ))}
+        <section>
+          <h2 className="text-2xl font-bold text-white">Related practice areas</h2>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {QUICK_LINKS.map(({ label, href }) => {
+              const Icon = PRACTICE_AREA_ICONS[label];
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 text-sm text-white transition-colors hover:border-gold/50"
+                >
+                  {Icon && <Icon className="h-3.5 w-3.5 text-gold" strokeWidth={2} />}
+                  {label}
+                </Link>
+              );
+            })}
+          </div>
+        </section>
 
-      <div>
-        <h2 className="text-2xl font-bold text-white">Cities we serve in {state.name}</h2>
-        <p className="mt-2 text-body">
-          We help injured people throughout {state.name}, including {cityList}.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          {state.cities.map((city) => (
-            <Link
-              key={city.slug}
-              href={`/areas-we-serve/${state.slug}/${city.slug}`}
-              className="rounded-full border border-hairline px-4 py-2 text-sm text-body hover:border-primary hover:text-white"
-            >
-              {city.name}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <p className="text-xs text-muted">
-        General information only, not legal advice. Deadlines can be shorter for claims
-        involving governmental entities, and may be tolled for minors. Confirm
-        specifics with an attorney.
-      </p>
-
-      <div className="flex flex-wrap gap-3">
-        {[
-          ["Birth Injury", "/practice-areas/birth-injury"],
-          ["Medical Malpractice", "/practice-areas/medical-malpractice"],
-          ["Car Accidents", "/practice-areas/car-accidents"],
-          ["Truck Accidents", "/practice-areas/truck-accidents"],
-        ].map(([label, href]) => (
-          <Link
-            key={href}
-            href={href}
-            className="rounded-full border border-hairline px-4 py-2 text-sm text-white hover:border-primary"
-          >
-            {label}
-          </Link>
-        ))}
-      </div>
-
-      <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">
-        <h3 className="text-xl font-bold text-white">Free {state.name} Case Review</h3>
-        <p className="mt-2 text-sm text-body">
-          No fee unless we win · Free, confidential case review · Real answers, fast
-        </p>
-        <div className="mt-4 flex flex-wrap justify-center gap-3">
-          <Link
-            href="/contact"
-            className="rounded-full bg-gold-gradient px-6 py-3 text-sm font-bold text-canvas hover:opacity-90"
-          >
-            Get My Free Case Review
-          </Link>
-          <a
-            href="tel:+18665836763"
-            className="rounded-full border border-hairline px-6 py-3 text-sm font-bold text-white hover:border-primary"
-          >
-            Call +1 (866) LT FOR ME
-          </a>
-        </div>
+        <AreaCtaCard areaName={state.name} />
       </div>
     </div>
   );
