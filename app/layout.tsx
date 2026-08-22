@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CaseReviewPopup from "@/components/CaseReviewPopup";
 import FloatingResourceWidget from "@/components/FloatingResourceWidget";
+import MobileCtaBar from "@/components/MobileCtaBar";
 import { siteConfig } from "@/lib/content";
 
 const inter = Inter({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CaseReviewPopup />
         <FloatingResourceWidget />
+        <MobileCtaBar />
       </body>
     </html>
   );

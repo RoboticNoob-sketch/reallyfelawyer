@@ -84,7 +84,7 @@ export default function FloatingResourceWidget() {
   const Icon = slide.icon;
 
   return (
-    <div className="animate-fade-up fixed bottom-6 right-6 z-40 w-[300px] max-w-[calc(100vw-2rem)] rounded-2xl border border-gold/40 bg-canvas p-4 shadow-2xl">
+    <div className="animate-fade-up fixed bottom-20 right-4 z-40 w-[300px] max-w-[calc(100vw-2rem)] rounded-2xl border border-gold/40 bg-canvas p-4 shadow-2xl md:bottom-6 md:right-6">
       <div className="flex items-start gap-3">
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
           <Icon className="h-4 w-4" strokeWidth={2} />

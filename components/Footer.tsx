@@ -5,7 +5,7 @@ import { footerNav, siteConfig } from "@/lib/content";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-hairline bg-canvas">
+    <footer className="border-t border-hairline bg-canvas pb-16 md:pb-0">
       <div className="mx-auto max-w-content px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)]">
           <div>
