@@ -5,7 +5,7 @@ import RevealOnScroll from "./RevealOnScroll";
 // per-page content that could drift out of sync.
 const TRUST_STATS = [
   { value: "20+", label: "Years of trial experience" },
-  { value: "4", label: "States served — TX, OK, NM, AZ" },
+  { value: "4+", label: "States served — TX, OK, NM, AZ + more" },
   { value: "$0", label: "Fee unless we win or settle" },
   { value: "24/7", label: "Free confidential case review" },
 ];

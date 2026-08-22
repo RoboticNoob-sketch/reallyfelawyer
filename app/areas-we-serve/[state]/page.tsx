@@ -54,7 +54,7 @@ export default async function StatePage({
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
         {[
           ["20+", "Years of trial experience"],
-          ["4", "States served — TX, OK, NM, AZ"],
+          ["4+", "States served — TX, OK, NM, AZ + more"],
           ["$0", "Fee unless we win or settle"],
           ["24/7", "Free confidential case review"],
         ].map(([value, label]) => (

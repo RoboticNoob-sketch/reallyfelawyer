@@ -33,7 +33,7 @@
   "state_page_template": {
     "h1": "{State} Birth Injury, Malpractice & Injury Lawyer",
     "intro": "Attorney Larry F. Taylor, Jr. — the RealLyfe Lawyer, as seen on Cochran Law Firm, Texas — represents {State} families in birth injury, medical malpractice, mass torts, traumatic brain injury, and car and truck wreck cases. Larry is based in Texas and licensed across Texas, Oklahoma, New Mexico, and Arizona, and partners with trusted co-counsel and associates nationwide — so no matter where you are, real answers and real advocacy are within reach.",
-    "stats": [{"value":"20+","label":"Years of trial experience"},{"value":"4","label":"States served — TX, OK, NM, AZ"},{"value":"$0","label":"Fee unless we win or settle"},{"value":"24/7","label":"Free confidential case review"}],
+    "stats": [{"value":"20+","label":"Years of trial experience"},{"value":"4+","label":"States served — TX, OK, NM, AZ + more"},{"value":"$0","label":"Fee unless we win or settle"},{"value":"24/7","label":"Free confidential case review"}],
     "cases_handled_heading": "{State} injury and malpractice cases we handle",
     "cases_handled_items": ["Birth injury (cerebral palsy, HIE, kernicterus, shoulder dystocia, placental abruption)","Medical malpractice (misdiagnosis, surgical errors)","Mass torts","Traumatic brain injury, car wrecks, truck wrecks, and wrongful death"],
     "cities_heading": "Cities we serve in {State}",
