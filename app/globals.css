@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-canvas text-body font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-white;
+  }
+
+  a {
+    @apply text-inherit;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-widest text-primary;
+  }
+}
+
+/* Hero entrance: staggered fade-up, and a slow ambient spin for the seal-style
+   badge image (it's a circular emblem with text on the rim, not a portrait —
+   the rotation reads as a badge/seal rather than a person's photo spinning). */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 36s linear infinite;
+}
+
+/* Slow one-time zoom for practice-area hero background photos — a subtle
+   Ken Burns effect rather than a looping in/out zoom, which reads as more
+   deliberate/editorial and less like a gimmick on a legal services page. */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 20s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-zoom {
+    animation: none;
+  }
+}

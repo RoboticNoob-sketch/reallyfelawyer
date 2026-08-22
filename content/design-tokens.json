@@ -1,0 +1,44 @@
+{
+  "site_title": "RealLyfe Lawyer",
+  "site_url": "https://reallyfelawyer.online",
+  "phone": "+1 (866) LT FOR ME",
+  "phone_tel_link": "tel:+18665836763",
+  "email": "info@taylormadelaw.com",
+  "address": "1200 Main Street, Unit 308, Dallas, TX 75202",
+  "social": {
+    "instagram": "https://instagram.com/RealLyfeLawyer",
+    "tiktok": "https://tiktok.com/@RealLyfeLawyer",
+    "youtube": "https://www.youtube.com/@taylormadeconversations",
+    "facebook": "https://www.facebook.com/TaylorMadeLaw"
+  },
+  "colors": {
+    "primary": "#D4AF37",
+    "secondary": "#0A0A0A",
+    "text": "#CCCCCC",
+    "accent": "#FFFFFF",
+    "canvas": "#0A0A0A",
+    "surface_card": "#1A1A1A",
+    "hairline": "#2A2A2A",
+    "muted": "#888888"
+  },
+  "gradients": {
+    "gold_button": "linear-gradient(120deg, #F3DA8C 0%, #B8942E 100%)",
+    "hero_section": "linear-gradient(180deg, #3A1640 0%, #0A0A0A 100%)",
+    "stat_bar": "linear-gradient(90deg, #3A1640 0%, #1A1A1A 100%)"
+  },
+  "typography": {
+    "font_family": "Inter",
+    "weights": { "text": 400, "accent": 500, "secondary_headings": 600, "primary_headings": 700 }
+  },
+  "tailwind_theme_suggestion": {
+    "colors": {
+      "primary": "#D4AF37",
+      "canvas": "#0A0A0A",
+      "surface": "#1A1A1A",
+      "hairline": "#2A2A2A",
+      "muted": "#888888",
+      "body": "#CCCCCC"
+    },
+    "fontFamily": { "sans": ["Inter", "sans-serif"] }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "free_case_review_form": {
+    "wordpress_id": 42,
+    "title": "Free Case Review - Contact Form",
+    "used_on": ["/contact/"],
+    "submit_button_text": "Get My Free Case Review",
+    "fields": [
+      {"id": 0, "type": "text", "label": "Name", "required": true},
+      {"id": 1, "type": "text", "label": "Phone", "required": true},
+      {"id": 2, "type": "email", "label": "Email", "required": true},
+      {"id": 3, "type": "textarea", "label": "Briefly describe what happened", "required": true,
+        "description": "Please do not include sensitive medical details in this form — we'll request records securely if needed."}
+    ],
+    "post_submit_note": "Submitting this form does not create an attorney-client relationship.",
+    "next_js_rebuild_plan": "4-field form (name, phone, email, textarea) → client component → server action or /api/contact route → email delivery via Resend or SendGrid. No form-builder plugin needed for something this simple."
+  }
+}

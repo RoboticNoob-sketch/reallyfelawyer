@@ -1,0 +1,102 @@
+{
+  "hub_page": {
+    "id": 37, "title": "Areas We Serve", "slug": "areas-we-serve",
+    "intro": "We represent injured people and families in Texas, Oklahoma, New Mexico, and Arizona — and, through a network of trusted co-counsel expanding across the U.S., we can help no matter where you are.",
+    "honesty_note": "Larry is licensed in Texas, Oklahoma, New Mexico, and Arizona; elsewhere we associate with qualified local counsel so you're always represented by an attorney admitted where your case is handled.",
+    "faq": [
+      {"q": "Do you have an office in my state?", "a": "We serve all four states and associate with local counsel where needed."},
+      {"q": "Which state's law applies?", "a": "Usually the state where the injury happened — we'll confirm in your free consultation."}
+    ],
+    "state_law_comparison_table_columns": ["State", "General injury SOL", "Med-mal specifics", "Damages caps"],
+    "disclaimer": "General information only, not legal advice — deadlines and rules have exceptions. Confirm specifics for your case with an attorney."
+  },
+  "note": "IMPORTANT: The 4 state pages and 10 city pages are 100% template-driven — same paragraph structure with only {state}/{city} names and the state-specific legal facts swapped in. Build ONE template component for states and ONE for cities, driven by this data, rather than 14 separate hardcoded pages.",
+  "city_page_template": {
+    "h1": "{City} Injury, Birth Injury & Malpractice Lawyer",
+    "intro": "Attorney Larry F. Taylor, Jr. — the RealLyfe Lawyer, as seen on Cochran Law Firm, Texas — represents {City} families in birth injury, medical malpractice, mass torts, brain injury, and car and truck wreck cases. Larry is based in Texas and licensed across Texas, Oklahoma, New Mexico, and Arizona, and partners with trusted co-counsel and associates nationwide — so no matter where you are, real answers and real advocacy are within reach.",
+    "deadline_heading": "How long do I have to file a claim in {City}, {State}?",
+    "deadline_text_template": "{state_deadline_summary} Because evidence disappears quickly, contact us as soon as possible.",
+    "why_us_heading": "Why {City} families choose the RealLyfe Lawyer",
+    "why_us_bullets": [
+      "Built for the cases others walk away from — birth injury, malpractice, and catastrophic injury.",
+      "No fee unless we win.",
+      "Local knowledge plus a nationwide network of co-counsel."
+    ],
+    "disclaimer": "General information only, not legal advice. Larry F. Taylor, Jr. works with locally licensed co-counsel as required by state law.",
+    "faq_template": [
+      {"q": "Do you have an office in {City}?", "a": "We serve {City} clients and associate with local counsel where needed."},
+      {"q": "What kinds of cases do you take in {City}?", "a": "Birth injury, medical malpractice, mass torts, traumatic brain injury, car and truck wrecks, and wrongful death."}
+    ],
+    "cta_heading": "Free {City} Case Review",
+    "buttons": [{"text":"Get My Free Case Review","link":"/contact/"},{"text":"Call +1 (866) LT FOR ME","link":"tel:+18665836763"}]
+  },
+  "state_page_template": {
+    "h1": "{State} Birth Injury, Malpractice & Injury Lawyer",
+    "intro": "Attorney Larry F. Taylor, Jr. — the RealLyfe Lawyer, as seen on Cochran Law Firm, Texas — represents {State} families in birth injury, medical malpractice, mass torts, traumatic brain injury, and car and truck wreck cases. Larry is based in Texas and licensed across Texas, Oklahoma, New Mexico, and Arizona, and partners with trusted co-counsel and associates nationwide — so no matter where you are, real answers and real advocacy are within reach.",
+    "stats": [{"value":"20+","label":"Years of trial experience"},{"value":"4","label":"States served — TX, OK, NM, AZ"},{"value":"$0","label":"Fee unless we win or settle"},{"value":"24/7","label":"Free confidential case review"}],
+    "cases_handled_heading": "{State} injury and malpractice cases we handle",
+    "cases_handled_items": ["Birth injury (cerebral palsy, HIE, kernicterus, shoulder dystocia, placental abruption)","Medical malpractice (misdiagnosis, surgical errors)","Mass torts","Traumatic brain injury, car wrecks, truck wrecks, and wrongful death"],
+    "cities_heading": "Cities we serve in {State}",
+    "cities_text_template": "We help injured people throughout {State}, including {city_list}.",
+    "disclaimer": "General information only, not legal advice. Deadlines can be shorter for claims involving governmental entities, and may be tolled for minors. Confirm specifics with an attorney.",
+    "practice_area_buttons": [{"text":"Birth Injury","link":"/practice-areas/birth-injury/"},{"text":"Medical Malpractice","link":"/practice-areas/medical-malpractice/"},{"text":"Car Accidents","link":"/practice-areas/car-accidents/"},{"text":"Truck Accidents","link":"/practice-areas/truck-accidents/"}],
+    "faq_template": [
+      {"q":"Is my consultation really free?","a":"Yes. Your consultation is free and confidential, and we work on contingency — no fee unless we win."},
+      {"q":"What if my injury happened in {State} but I've moved away?","a":"We can still help. Larry is licensed in {State}, and through our nationwide network we coordinate wherever you are."},
+      {"q":"Do you handle mass tort claims in {State}?","a":"Yes. Mass tort claims are often filed in federal court and can involve claimants nationwide."}
+    ]
+  },
+  "states": [
+    {
+      "id": 38, "name": "Texas", "slug": "texas",
+      "general_sol": "2 years (Tex. Civ. Prac. & Rem. Code §16.003)",
+      "med_mal_specifics": "Expert report required (§74.351); notice (§74.051)",
+      "damages_cap": "Non-economic cap applies (§74.301)",
+      "deadline_summary": "Two years for most cases under Texas law — sometimes less, with special rules for children. In Texas, most injury and medical-malpractice claims must be filed within two years (Tex. Civ. Prac. & Rem. Code §16.003; §74.251), and medical-malpractice cases require a detailed expert report within 120 days (§74.351). Texas also caps non-economic damages in medical-malpractice cases at $250,000 per provider (§74.301); economic damages like medical bills and lost income are not capped.",
+      "notes_extra": ["60 days' pre-suit notice generally required — §74.051; expert report required within 120 days of filing — §74.351."],
+      "cities": [
+        {"id":204,"name":"Dallas","slug":"dallas"},
+        {"id":206,"name":"Houston","slug":"houston"},
+        {"id":208,"name":"Austin","slug":"austin"},
+        {"id":210,"name":"San Antonio","slug":"san-antonio"},
+        {"id":212,"name":"Fort Worth","slug":"fort-worth"}
+      ]
+    },
+    {
+      "id": 39, "name": "Oklahoma", "slug": "oklahoma",
+      "general_sol": "2 years (Okla. Stat. tit. 12 §95)",
+      "med_mal_specifics": "Affidavit of merit generally required",
+      "damages_cap": "No cap (Beason v. I.E. Miller)",
+      "deadline_summary": "Two years for most cases under Oklahoma law — sometimes less, with special rules for children. In Oklahoma, most injury and medical-malpractice claims must be filed within two years (Okla. Stat. tit. 12, §95). Oklahoma does not currently cap non-economic damages — the state's $350,000 cap was struck down as unconstitutional in Beason v. I.E. Miller Services (2019).",
+      "notes_extra": [],
+      "cities": [
+        {"id":214,"name":"Oklahoma City","slug":"oklahoma-city"},
+        {"id":216,"name":"Tulsa","slug":"tulsa"}
+      ]
+    },
+    {
+      "id": 40, "name": "New Mexico", "slug": "new-mexico",
+      "general_sol": "3 years (NMSA §37-1-8)",
+      "med_mal_specifics": "Review panel process (§41-5-13)",
+      "damages_cap": "Cap applies to certain damages",
+      "deadline_summary": "Three years for most cases under New Mexico law — sometimes less, with special rules for children. In New Mexico, most injury claims must be filed within three years (NMSA §37-1-8); medical-malpractice cases fall under the Medical Malpractice Act (NMSA §41-5-13), which is largely occurrence-based with special tolling for young children. New Mexico's malpractice cap changes annually and differs for hospitals vs. independent providers, and generally does not limit medical-care benefits or punitive damages.",
+      "notes_extra": [],
+      "cities": [
+        {"id":218,"name":"Albuquerque","slug":"albuquerque"},
+        {"id":220,"name":"Las Cruces","slug":"las-cruces"}
+      ]
+    },
+    {
+      "id": 41, "name": "Arizona", "slug": "arizona",
+      "general_sol": "2 years (Ariz. Rev. Stat. §12-542)",
+      "med_mal_specifics": "Preliminary expert opinion affidavit required",
+      "damages_cap": "No cap (Ariz. Const. art. 2 §31)",
+      "deadline_summary": "Two years for most cases under Arizona law — sometimes less, with special rules for children. In Arizona, most injury and medical-malpractice claims must be filed within two years (Ariz. Rev. Stat. §12-542). Arizona is one of the few states whose constitution prohibits caps on injury damages (Ariz. Const. art. 2, §31) — a jury, not a legislature, decides the full value of an Arizona victim's harm.",
+      "notes_extra": [],
+      "cities": [
+        {"id":222,"name":"Phoenix","slug":"phoenix"},
+        {"id":224,"name":"Tucson","slug":"tucson"}
+      ]
+    }
+  ]
+}
