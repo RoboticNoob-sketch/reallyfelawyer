@@ -13,7 +13,7 @@ import {
   BookOpen,
   type LucideIcon,
 } from "lucide-react";
-import ServiceAreaGlobe from "./ServiceAreaGlobe";
+import ServiceAreaMap from "./ServiceAreaMap";
 import RevealOnScroll from "./RevealOnScroll";
 import PlatformIcon, { type Platform } from "./PlatformIcon";
 import FaqAccordion from "./FaqAccordion";
@@ -660,9 +660,9 @@ export default function BlockRenderer({ blocks }: { blocks: Block[] }) {
                 <div
                   className="relative mb-8 aspect-[16/9] overflow-hidden rounded-2xl border border-hairline bg-canvas sm:aspect-[21/9]"
                   role="img"
-                  aria-label="Rotating globe highlighting Texas, Oklahoma, New Mexico and Arizona — the states RealLyfe Lawyer serves"
+                  aria-label="3D relief map of the United States highlighting Texas, Oklahoma, New Mexico and Arizona — the states RealLyfe Lawyer serves"
                 >
-                  <ServiceAreaGlobe />
+                  <ServiceAreaMap />
                 </div>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                   {block.states.map((state, j) => (
