@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import CaseReviewPopup from "@/components/CaseReviewPopup";
 import FloatingResourceWidget from "@/components/FloatingResourceWidget";
 import MobileCtaBar from "@/components/MobileCtaBar";
-import BrandMarkReveal from "@/components/BrandMarkReveal";
 import { siteConfig } from "@/lib/content";
 
 const inter = Inter({
@@ -47,7 +46,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             resolves to the same black as the page background so there's no
             visible seam once it fades out. */}
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-hero-gradient" />
-        <BrandMarkReveal />
         <Header />
         <main>{children}</main>
         <Footer />
