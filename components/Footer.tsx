@@ -12,7 +12,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex flex-col items-start gap-4">
               <span className="relative h-36 w-36 overflow-hidden rounded-full border border-gold/30 bg-canvas">
                 <Image
-                  src="https://reallyfelawyer.online/wp-content/uploads/2026/07/RealLyfeLawyer_HeadLogo_Bk-2.png"
+                  src="/brand/RealLyfeLawyer_HeadLogo_Bk-2.webp"
                   alt="RealLyfe Lawyer"
                   fill
                   sizes="144px"

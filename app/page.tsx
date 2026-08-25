@@ -18,6 +18,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import PlatformIcon, { type Platform } from "@/components/PlatformIcon";
 import PullQuote from "@/components/PullQuote";
 import StatBar from "@/components/StatBar";
+import BrandSeal from "@/components/BrandSeal";
 import HeroImageCarousel from "@/components/HeroImageCarousel";
 import { PRACTICE_AREA_ICONS } from "@/components/PracticeAreaIcon";
 import { home, practiceAreaCategories, normalizeHref } from "@/lib/content";
@@ -189,6 +190,9 @@ export default function HomePage() {
 
       {/* Stat bar */}
       <StatBar />
+
+      {/* Brand seal */}
+      <BrandSeal />
 
       <div className="mx-auto max-w-content space-y-16 px-6 py-14 sm:space-y-20 sm:py-20 lg:space-y-24">
         {/* Practice areas */}

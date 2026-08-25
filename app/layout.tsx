@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import CaseReviewPopup from "@/components/CaseReviewPopup";
 import FloatingResourceWidget from "@/components/FloatingResourceWidget";
 import MobileCtaBar from "@/components/MobileCtaBar";
+import BrandMarkReveal from "@/components/BrandMarkReveal";
 import { siteConfig } from "@/lib/content";
 
 const inter = Inter({
@@ -14,10 +15,26 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
+const title = `${siteConfig.site_title} — Birth Injury, Malpractice & Accident Attorney`;
+const description =
+  "Trial attorney Larry F. Taylor, Jr. represents families in birth injury, medical malpractice, mass torts, traumatic brain injury and accident cases across TX, OK, NM & AZ. No fee unless we win.";
+
 export const metadata: Metadata = {
-  title: `${siteConfig.site_title} — Birth Injury, Malpractice & Accident Attorney`,
-  description:
-    "Trial attorney Larry F. Taylor, Jr. represents families in birth injury, medical malpractice, mass torts, traumatic brain injury and accident cases across TX, OK, NM & AZ. No fee unless we win.",
+  metadataBase: new URL(siteConfig.site_url),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: siteConfig.site_url,
+    siteName: siteConfig.site_title,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             resolves to the same black as the page background so there's no
             visible seam once it fades out. */}
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-hero-gradient" />
+        <BrandMarkReveal />
         <Header />
         <main>{children}</main>
         <Footer />

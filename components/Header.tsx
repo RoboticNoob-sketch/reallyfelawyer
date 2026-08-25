@@ -10,11 +10,12 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2.5">
           <span className="relative h-9 w-9 overflow-hidden rounded-full border border-hairline bg-surface">
             <Image
-              src="https://reallyfelawyer.online/wp-content/uploads/2026/07/RealLyfeLawyer_HeadLogo_Bk-2.png"
+              src="/brand/RealLyfeLawyer_HeadLogo_Bk-2.webp"
               alt=""
               fill
               sizes="36px"
               className="object-cover"
+              priority
             />
           </span>
           <span className="font-sans text-lg font-bold text-white">
